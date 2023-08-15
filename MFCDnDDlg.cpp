@@ -21,6 +21,10 @@ CMFCDnDDlg::CMFCDnDDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFCDND_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+
+	Race humanRace;
+	humanRace.name = _T("Human");
+	race.push_back(humanRace);
 }
 
 void CMFCDnDDlg::DoDataExchange(CDataExchange* pDX)
@@ -46,6 +50,11 @@ BOOL CMFCDnDDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+
+	CComboBox* pRaceCombo = (CComboBox*)GetDlgItem(IDC_COMBO1);
+	for (const Race& race : race) {
+		pRaceCombo->AddString(race.name);
+	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }

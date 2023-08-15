@@ -3,6 +3,9 @@
 //
 
 #pragma once
+#include "Race.hpp"
+#include <vector>
+
 
 
 // CMFCDnDDlg dialog
@@ -12,6 +15,8 @@ class CMFCDnDDlg : public CDialogEx
 public:
 	CMFCDnDDlg(CWnd* pParent = nullptr);	// standard constructor
 
+private:
+	std::vector<Race> race;
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_MFCDND_DIALOG };
