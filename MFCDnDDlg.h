@@ -17,6 +17,7 @@ public:
 
 private:
 	std::vector<Race> race;
+	CComboBox raceCombo;
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_MFCDND_DIALOG };
@@ -35,4 +36,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedOk();
 };

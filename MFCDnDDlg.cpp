@@ -35,6 +35,7 @@ void CMFCDnDDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMFCDnDDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDOK, &CMFCDnDDlg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -50,6 +51,8 @@ BOOL CMFCDnDDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+
+	raceCombo.Attach(GetDlgItem(IDC_COMBO1)->GetSafeHwnd());
 
 	CComboBox* pRaceCombo = (CComboBox*)GetDlgItem(IDC_COMBO1);
 	for (const Race& race : race) {
@@ -95,3 +98,14 @@ HCURSOR CMFCDnDDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CMFCDnDDlg::OnBnClickedOk()
+{
+	// TODO: Add your control notification handler code here
+
+	int selectedRace = raceCombo.GetCurSel();
+
+
+	CDialogEx::OnOK();
+}
