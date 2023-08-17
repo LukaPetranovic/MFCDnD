@@ -22,9 +22,12 @@ CMFCDnDDlg::CMFCDnDDlg(CWnd* pParent /*=nullptr*/)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 
-	Race humanRace;
+	Race humanRace, elfRace;
 	humanRace.name = _T("Human");
 	race.push_back(humanRace);
+	elfRace.name = _T("Elf");
+	race.push_back(elfRace);
+
 }
 
 void CMFCDnDDlg::DoDataExchange(CDataExchange* pDX)
@@ -104,8 +107,46 @@ void CMFCDnDDlg::OnBnClickedOk()
 {
 	// TODO: Add your control notification handler code here
 
-	int selectedRace = raceCombo.GetCurSel();
+	int selectedRaceIndex = raceCombo.GetCurSel();
 
 
-	CDialogEx::OnOK();
+	if (selectedRaceIndex != CB_ERR && selectedRaceIndex == 0) {
+		Race selectedRace = race[selectedRaceIndex];
+		//int baseStat = 8;
+
+
+		//CString strModifier;
+		strModifier.LoadString(IDS_STR_MOD);
+
+		int modifier = _wtoi(strModifier);
+
+		int modifiedStat = baseStat + modifier;
+
+		//CString modifiedStatStr;
+		modifiedStatStr.Format(_T("%d"), modifiedStat);
+
+		CEdit* pStrEdit = (CEdit*)GetDlgItem(IDC_EDIT1);
+		pStrEdit->SetWindowText(modifiedStatStr);
+
+	}
+
+	else if (selectedRaceIndex != CB_ERR && selectedRaceIndex == 1) {
+		Race selectedRace = race[selectedRaceIndex];
+		//int baseStat = 8;
+
+
+		//CString strModifier;
+		strModifier.LoadString(IDS_STR_MOD);
+
+		int modifier = _wtoi(strModifier);
+
+		int modifiedStat = baseStat + modifier + 2;
+
+		//CString modifiedStatStr;
+		modifiedStatStr.Format(_T("%d"), modifiedStat);
+
+		CEdit* pStrEdit = (CEdit*)GetDlgItem(IDC_EDIT1);
+		pStrEdit->SetWindowText(modifiedStatStr);
+	}
+	//CDialogEx::OnOK();
 }

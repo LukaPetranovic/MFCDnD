@@ -3,6 +3,7 @@ class Race
 {
 public:
 	CString name;
-	int strengthModifier;
+	int strengthModifier, dexterityModifier, constitutuionModifier,
+		intelligenceModifier, wisdomModifier, charismaModifier;
 };
 

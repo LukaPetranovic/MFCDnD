@@ -18,6 +18,9 @@ public:
 private:
 	std::vector<Race> race;
 	CComboBox raceCombo;
+	CString strModifier;
+	CString modifiedStatStr;
+	int baseStat = 8;
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_MFCDND_DIALOG };

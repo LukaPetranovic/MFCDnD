@@ -294,7 +294,9 @@
     <None Include="res\MFCDnD.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\icon1.ico" />
     <Image Include="res\MFCDnD.ico" />
+    <Image Include="\\Mac\Home\Desktop\Untitled_Artwork copy.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
