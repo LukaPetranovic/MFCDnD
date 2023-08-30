@@ -115,35 +115,66 @@ void CMFCDnDDlg::OnBnClickedOk()
 		return;
 	}
 	Race selectedRace;
-	int randomStat, modifier;
+	int randomStrStat, randomDexStat, randomConStat, randomIntStat, randomWisStat, randomChaStat, modifier;
 	CEdit* pStrEdit;
+	CEdit* pDexEdit;
+	CEdit* pConEdit;
+	CEdit* pIntEdit;
+	CEdit* pWisEdit;
+	CEdit* pChaEdit;
 
 	StatCalculator statCalculator;
 	switch (selectedRaceIndex) {
 	case 0:
 		selectedRace = race[selectedRaceIndex];
-		randomStat = statCalculator.CalculateRandomStat();
-		strModifier.LoadString(IDS_STR_MOD);
+		randomStrStat = statCalculator.CalculateRandomStat();
+		randomDexStat = statCalculator.CalculateRandomStat();
+		randomConStat = statCalculator.CalculateRandomStat();
+		randomIntStat = statCalculator.CalculateRandomStat();
+		randomWisStat = statCalculator.CalculateRandomStat();
+		randomChaStat = statCalculator.CalculateRandomStat();
+
+		strModifier.LoadString(HUMAN_STR_MOD);
+		dexModifier.LoadString(HUMAN_DEX_MOD);
+		conModifier.LoadString(HUMAN_CON_MOD);
+		intModifier.LoadString(HUMAN_INT_MOD);
+		wisModifier.LoadString(HUMAN_WIS_MOD);
+		chaModifier.LoadString(HUMAN_CHA_MOD);
 
 		modifier = _wtoi(strModifier);
+		
 
-		modifiedStatStr.Format(_T("%d"), randomStat);
+		modifiedStatStr.Format(_T("%d"), randomStrStat);
 
 		pStrEdit = (CEdit*)GetDlgItem(IDC_EDIT1);
 		pStrEdit->SetWindowText(modifiedStatStr);
+
+		modifier = _wtoi(dexModifier);
+		modifiedStatDex.Format(_T("%d"), randomDexStat);
+		pDexEdit = (CEdit*)GetDlgItem(IDC_EDIT2);
+		pDexEdit->SetWindowText(modifiedStatDex);
+
+		modifier = _wtoi(conModifier);
+		modifiedStatCon.Format(_T("%d"), randomConStat);
+		pConEdit = (CEdit*)GetDlgItem(IDC_EDIT3);
+		pConEdit->SetWindowText(modifiedStatCon);
+
+		modifier = _wtoi(intModifier);
+		modifiedStatInt.Format(_T("%d"), randomIntStat);
+		pIntEdit = (CEdit*)GetDlgItem(IDC_EDIT4);
+		pIntEdit->SetWindowText(modifiedStatInt);
+
+		modifier = _wtoi(wisModifier);
+		modifiedStatWis.Format(_T("%d"), randomWisStat);
+		pWisEdit = (CEdit*)GetDlgItem(IDC_EDIT5);
+		pWisEdit->SetWindowText(modifiedStatWis);
+
+		modifier = _wtoi(chaModifier);
+		modifiedStatCha.Format(_T("%d"), randomChaStat);
+		pChaEdit = (CEdit*)GetDlgItem(IDC_EDIT6);
+		pChaEdit->SetWindowText(modifiedStatCha);
 		break;
-	case 1:
-		selectedRace = race[selectedRaceIndex];
-		randomStat = statCalculator.CalculateRandomStat();
-		strModifier.LoadString(IDS_STR_MOD);
-
-		modifier = _wtoi(strModifier);
-
-		modifiedStatStr.Format(_T("%d"), randomStat);
-
-		pStrEdit = (CEdit*)GetDlgItem(IDC_EDIT1);
-		pStrEdit->SetWindowText(modifiedStatStr);
-		break;
+	
 	}
 	// Remove if else block and add switch block
 	/*if (selectedRaceIndex != CB_ERR && selectedRaceIndex == 0) {

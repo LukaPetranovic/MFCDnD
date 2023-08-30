@@ -18,8 +18,8 @@ public:
 private:
 	std::vector<Race> race;
 	CComboBox raceCombo;
-	CString strModifier;
-	CString modifiedStatStr;
+	CString strModifier, dexModifier, conModifier, intModifier, wisModifier, chaModifier;
+	CString modifiedStatStr, modifiedStatDex, modifiedStatCon, modifiedStatInt, modifiedStatWis, modifiedStatCha;
 	int baseStat = 8;
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
