@@ -36,6 +36,9 @@
     <ClInclude Include="Race.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StatCalculator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFCDnD.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Race.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StatCalculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -63,9 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\MFCDnD.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\icon1.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="\\Mac\Home\Desktop\Untitled_Artwork copy.bmp">
