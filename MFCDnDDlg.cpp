@@ -60,11 +60,9 @@ BOOL CMFCDnDDlg::OnInitDialog()
 	//raceCombo.Attach(GetDlgItem(IDC_COMBO1)->GetSafeHwnd());
 	raceCombo.SubclassDlgItem(IDC_COMBO1, this);
 	CComboBox* pRaceCombo = (CComboBox*)GetDlgItem(IDC_COMBO1);
-	if (pRaceCombo) {
-		for (const Race& r : race) {
+	for (const Race& r : race) {
 			pRaceCombo->AddString(r.name);
 		}
-	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
