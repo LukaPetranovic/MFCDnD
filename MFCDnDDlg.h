@@ -41,4 +41,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
+	void UpdateStats(int randomStat, const CString& modifierStr, CEdit* EditControl);
 };

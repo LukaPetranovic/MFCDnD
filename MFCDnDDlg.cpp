@@ -102,6 +102,14 @@ HCURSOR CMFCDnDDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void CMFCDnDDlg::UpdateStats(int randomStat, const CString& modifierStr, CEdit* EditControl)
+{
+	int modifier = _wtoi(modifierStr);
+	CString modifiedStatStr;
+	modifiedStatStr.Format(_T("%d"), randomStat);
+	EditControl->SetWindowText(modifiedStatStr);
+}
+
 
 
 void CMFCDnDDlg::OnBnClickedOk()
@@ -116,17 +124,17 @@ void CMFCDnDDlg::OnBnClickedOk()
 	}
 	Race selectedRace;
 	int randomStrStat, randomDexStat, randomConStat, randomIntStat, randomWisStat, randomChaStat, modifier;
-	CEdit* pStrEdit;
-	CEdit* pDexEdit;
-	CEdit* pConEdit;
-	CEdit* pIntEdit;
-	CEdit* pWisEdit;
-	CEdit* pChaEdit;
+	//CEdit* pStrEdit, *pDexEdit, *pConEdit, *pIntEdit, *pWisEdit, *pChaEdit;
+	//CEdit* pDexEdit;
+	//CEdit* pConEdit;
+	//CEdit* pIntEdit;
+	//CEdit* pWisEdit;
+	//CEdit* pChaEdit;
 
 	StatCalculator statCalculator;
 	switch (selectedRaceIndex) {
 	case 0:
-		selectedRace = race[selectedRaceIndex];
+		//selectedRace = race[selectedRaceIndex];
 		randomStrStat = statCalculator.CalculateRandomStat();
 		randomDexStat = statCalculator.CalculateRandomStat();
 		randomConStat = statCalculator.CalculateRandomStat();
@@ -141,7 +149,7 @@ void CMFCDnDDlg::OnBnClickedOk()
 		wisModifier.LoadString(HUMAN_WIS_MOD);
 		chaModifier.LoadString(HUMAN_CHA_MOD);
 
-		modifier = _wtoi(strModifier);
+		/*modifier = _wtoi(strModifier);
 		
 
 		modifiedStatStr.Format(_T("%d"), randomStrStat);
@@ -172,7 +180,14 @@ void CMFCDnDDlg::OnBnClickedOk()
 		modifier = _wtoi(chaModifier);
 		modifiedStatCha.Format(_T("%d"), randomChaStat);
 		pChaEdit = (CEdit*)GetDlgItem(IDC_EDIT6);
-		pChaEdit->SetWindowText(modifiedStatCha);
+		pChaEdit->SetWindowText(modifiedStatCha);*/
+
+		UpdateStats(randomStrStat, strModifier, (CEdit*)GetDlgItem(IDC_EDIT1));
+		UpdateStats(randomDexStat, dexModifier, (CEdit*)GetDlgItem(IDC_EDIT2));
+		UpdateStats(randomConStat, conModifier, (CEdit*)GetDlgItem(IDC_EDIT3));
+		UpdateStats(randomIntStat, intModifier, (CEdit*)GetDlgItem(IDC_EDIT4));
+		UpdateStats(randomWisStat, wisModifier, (CEdit*)GetDlgItem(IDC_EDIT5));
+		UpdateStats(randomChaStat, chaModifier, (CEdit*)GetDlgItem(IDC_EDIT6));
 		break;
 	
 	}
