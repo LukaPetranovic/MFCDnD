@@ -40,6 +40,7 @@ BEGIN_MESSAGE_MAP(CMFCDnDDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CMFCDnDDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDCANCEL, &CMFCDnDDlg::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
 
@@ -56,11 +57,13 @@ BOOL CMFCDnDDlg::OnInitDialog()
 
 	// TODO: Add extra initialization here
 
-	raceCombo.Attach(GetDlgItem(IDC_COMBO1)->GetSafeHwnd());
-
+	//raceCombo.Attach(GetDlgItem(IDC_COMBO1)->GetSafeHwnd());
+	raceCombo.SubclassDlgItem(IDC_COMBO1, this);
 	CComboBox* pRaceCombo = (CComboBox*)GetDlgItem(IDC_COMBO1);
-	for (const Race& race : race) {
-		pRaceCombo->AddString(race.name);
+	if (pRaceCombo) {
+		for (const Race& r : race) {
+			pRaceCombo->AddString(r.name);
+		}
 	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -150,7 +153,7 @@ void CMFCDnDDlg::OnBnClickedOk()
 		chaModifier.LoadString(HUMAN_CHA_MOD);
 
 		/*modifier = _wtoi(strModifier);
-		
+
 
 		modifiedStatStr.Format(_T("%d"), randomStrStat);
 
@@ -189,7 +192,7 @@ void CMFCDnDDlg::OnBnClickedOk()
 		UpdateStats(randomWisStat, wisModifier, (CEdit*)GetDlgItem(IDC_EDIT5));
 		UpdateStats(randomChaStat, chaModifier, (CEdit*)GetDlgItem(IDC_EDIT6));
 		break;
-	
+
 	}
 	// Remove if else block and add switch block
 	/*if (selectedRaceIndex != CB_ERR && selectedRaceIndex == 0) {
@@ -229,4 +232,11 @@ void CMFCDnDDlg::OnBnClickedOk()
 		pStrEdit->SetWindowText(modifiedStatStr);
 	}*/
 	//CDialogEx::OnOK();
+}
+
+
+void CMFCDnDDlg::OnBnClickedCancel()
+{
+	// TODO: Add your control notification handler code here
+	CDialogEx::OnCancel();
 }

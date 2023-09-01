@@ -42,4 +42,5 @@ protected:
 public:
 	afx_msg void OnBnClickedOk();
 	void UpdateStats(int randomStat, const CString& modifierStr, CEdit* EditControl);
+	afx_msg void OnBnClickedCancel();
 };
