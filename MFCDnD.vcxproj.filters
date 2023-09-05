@@ -36,7 +36,7 @@
     <ClInclude Include="Race.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StatCalculator.h">
+    <ClInclude Include="StatCalculator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

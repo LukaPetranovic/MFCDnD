@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "StatCalculator.h"
+#include "StatCalculator.hpp"
 #include <random>
 
 int modifiedStat;

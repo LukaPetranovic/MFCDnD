@@ -272,7 +272,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Race.hpp" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="StatCalculator.h" />
+    <ClInclude Include="StatCalculator.hpp" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
