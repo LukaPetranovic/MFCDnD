@@ -23,11 +23,15 @@ CMFCDnDDlg::CMFCDnDDlg(CWnd* pParent /*=nullptr*/)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 
-	Race humanRace, elfRace;
+	Race humanRace, elfRace, dwarfRace, gnomeRace;
 	humanRace.name = _T("Human");
 	race.push_back(humanRace);
 	elfRace.name = _T("Elf");
 	race.push_back(elfRace);
+	dwarfRace.name = _T("Dwarf");
+	race.push_back(dwarfRace);
+	gnomeRace.name = _T("Gnome");
+	race.push_back(gnomeRace);
 
 }
 
@@ -203,6 +207,67 @@ void CMFCDnDDlg::OnBnClickedOk()
 		pConEdit = (CEdit*)GetDlgItem(IDC_EDIT3);
 		pConEdit->SetWindowText(modifiedStatCon);
 
+		modifiedStatInt.Format(_T("%d"), randomIntStat);
+		pIntEdit = (CEdit*)GetDlgItem(IDC_EDIT4);
+		pIntEdit->SetWindowText(modifiedStatInt);
+
+		modifiedStatWis.Format(_T("%d"), randomWisStat);
+		pWisEdit = (CEdit*)GetDlgItem(IDC_EDIT5);
+		pWisEdit->SetWindowText(modifiedStatWis);
+
+		modifiedStatCha.Format(_T("%d"), randomChaStat);
+		pChaEdit = (CEdit*)GetDlgItem(IDC_EDIT6);
+		pChaEdit->SetWindowText(modifiedStatCha);
+		break;
+
+	case 2:
+
+		conModifier.LoadString(DWARF_CON_MOD);
+
+		modifiedStatStr.Format(_T("%d"), randomStrStat);
+		pStrEdit = (CEdit*)GetDlgItem(IDC_EDIT1);
+		pStrEdit->SetWindowText(modifiedStatStr);
+
+		modifiedStatDex.Format(_T("%d"), randomDexStat);
+		pDexEdit = (CEdit*)GetDlgItem(IDC_EDIT2);
+		pDexEdit->SetWindowText(modifiedStatDex);
+
+		modifier = _wtoi(conModifier);
+		randomConStat += modifier;
+		modifiedStatCon.Format(_T("%d"), randomConStat);
+		pConEdit = (CEdit*)GetDlgItem(IDC_EDIT3);
+		pConEdit->SetWindowText(modifiedStatCon);
+
+		modifiedStatInt.Format(_T("%d"), randomIntStat);
+		pIntEdit = (CEdit*)GetDlgItem(IDC_EDIT4);
+		pIntEdit->SetWindowText(modifiedStatInt);
+
+		modifiedStatWis.Format(_T("%d"), randomWisStat);
+		pWisEdit = (CEdit*)GetDlgItem(IDC_EDIT5);
+		pWisEdit->SetWindowText(modifiedStatWis);
+
+		modifiedStatCha.Format(_T("%d"), randomChaStat);
+		pChaEdit = (CEdit*)GetDlgItem(IDC_EDIT6);
+		pChaEdit->SetWindowText(modifiedStatCha);
+		break;
+
+	case 3:
+		intModifier.LoadString(GNOME_INT_MOD);
+
+		modifiedStatStr.Format(_T("%d"), randomStrStat);
+		pStrEdit = (CEdit*)GetDlgItem(IDC_EDIT1);
+		pStrEdit->SetWindowText(modifiedStatStr);
+
+		modifiedStatDex.Format(_T("%d"), randomDexStat);
+		pDexEdit = (CEdit*)GetDlgItem(IDC_EDIT2);
+		pDexEdit->SetWindowText(modifiedStatDex);
+
+		modifiedStatCon.Format(_T("%d"), randomConStat);
+		pConEdit = (CEdit*)GetDlgItem(IDC_EDIT3);
+		pConEdit->SetWindowText(modifiedStatCon);
+
+		modifier = _wtoi(intModifier);
+		randomIntStat += modifier;
 		modifiedStatInt.Format(_T("%d"), randomIntStat);
 		pIntEdit = (CEdit*)GetDlgItem(IDC_EDIT4);
 		pIntEdit->SetWindowText(modifiedStatInt);

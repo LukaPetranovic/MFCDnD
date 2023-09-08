@@ -9,6 +9,8 @@
 #define HUMAN_WIS_MOD                   5
 #define HUMAN_CHA_MOD                   6
 #define ELF_DEX_MOD                     7
+#define DWARF_CON_MOD                   8
+#define GNOME_INT_MOD                   9
 #define IDD_MFCDND_DIALOG               102
 #define IDR_MAINFRAME                   128
 #define IDC_COMBO1                      1000
