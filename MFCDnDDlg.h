@@ -8,7 +8,6 @@ public:
 
 private:
 	CComboBox raceCombo;
-	CString racialBonuses;
 	int RaceModifier(int race_index, UINT id);
 	CString RaceExplaModifier(int race_index);
 	void UpdateStats(int n, UINT id);

@@ -86,18 +86,12 @@ void CMFCDnDDlg::OnBnClickedOk()
 		return;
 	}
 	StatCalculator sc;
-	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT1),
-		IDC_EDIT1);
-	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT2),
-		IDC_EDIT2);
-	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT3),
-		IDC_EDIT3);
-	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT4),
-		IDC_EDIT4);
-	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT5),
-		IDC_EDIT5);
-	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT6),
-		IDC_EDIT6);
+	SetDlgItemInt(IDC_EDIT1, sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT1));
+	SetDlgItemInt(IDC_EDIT2, sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT2));
+	SetDlgItemInt(IDC_EDIT3, sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT3));
+	SetDlgItemInt(IDC_EDIT4, sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT4));
+	SetDlgItemInt(IDC_EDIT5, sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT5));
+	SetDlgItemInt(IDC_EDIT6, sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT6));
 }
 
 
@@ -115,11 +109,6 @@ int CMFCDnDDlg::RaceModifier(int race_index, UINT id)
 	}
 }
 
-void CMFCDnDDlg::UpdateStats(int n, UINT id)
-{
-	CString s; s.Format(_T("%d"), n);
-	GetDlgItem(id)->SetWindowText(s);
-}
 
 
 void CMFCDnDDlg::OnBnClickedCancel()
