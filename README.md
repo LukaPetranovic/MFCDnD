@@ -13,22 +13,23 @@ Odabir rase
 Odabrana rasa
 ![App Screenshot](https://github.com/LukaPetranovic/MFCDnD/blob/master/Screenshots/03.png?raw=true)
 
-Pritiskom na gumb Generiraj ispunjavaju se polja sa bodovima
+Pritiskom na gumb OK ispunjavaju se polja sa bodovima za odabranu rasu
 ![App Screenshot](https://github.com/LukaPetranovic/MFCDnD/blob/master/Screenshots/04.png?raw=true)
 
-Ponovni pritisak na gumb Generiraj, program ispunjava polja s novo generiranim bodovima
+Ponovni pritisak na gumb OK, program ispunjava polja s novo generiranim bodovima za odabranu rasu
 ![App Screenshot](https://github.com/LukaPetranovic/MFCDnD/blob/master/Screenshots/05.png?raw=true)
 
 
-Ponovni pritisak na gumb Generiraj, program ispunjava polja s novo generiranim bodovima u nedogled
+Ponovni pritisak na gumb OK, program ispunjava polja s novo generiranim bodovima u nedogled za odabranu rasu
 ![App Screenshot](https://github.com/LukaPetranovic/MFCDnD/blob/master/Screenshots/06.png?raw=true)
 
 
-Ako se odabere nova rasa potrebno je ponovno kliknuti gumb Generiraj kako bi se ažurirala polja za novo odabranu rasu
+Ako se odabere nova rasa potrebno je ponovno kliknuti gumb OK kako bi se ažurirala polja za novo odabranu rasu
 ![App Screenshot](https://github.com/LukaPetranovic/MFCDnD/blob/master/Screenshots/07.png?raw=true)
 
-Nakon odabira nove rase, pritiskom na gumb Generiraj se ispunjavaju polja sa bodovima s novom rasom i njenim bonusom bodovima
+Nakon odabira nove rase, pritiskom na gumb OK se ispunjavaju polja sa bodovima s novom rasom i njenim bonusom bodovima
 ![App Screenshot](https://github.com/LukaPetranovic/MFCDnD/blob/master/Screenshots/08.png?raw=true)
+Pritiskom na gumb Cancel, aplikacija se zatvara
 ## Authors
 
 - [@Luka Petranović](https://github.com/LukaPetranovic)
