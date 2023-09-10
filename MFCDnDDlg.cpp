@@ -45,6 +45,7 @@ BEGIN_MESSAGE_MAP(CMFCDnDDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CMFCDnDDlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &CMFCDnDDlg::OnBnClickedCancel)
+	ON_CBN_SELCHANGE(IDC_COMBO1, &CMFCDnDDlg::OnCbnSelchangeCombo1)
 END_MESSAGE_MAP()
 
 
@@ -67,6 +68,9 @@ BOOL CMFCDnDDlg::OnInitDialog()
 	for (const Race& r : race) {
 		pRaceCombo->AddString(r.name);
 	}
+
+	CEdit* pRacialBonusesEdit = (CEdit*)GetDlgItem(IDC_EDIT7);
+	pRacialBonusesEdit->SetWindowText(_T("Select a race"));
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -286,4 +290,28 @@ void CMFCDnDDlg::OnBnClickedOk()
 void CMFCDnDDlg::OnBnClickedCancel()
 {
 	CDialogEx::OnCancel();
+}
+
+
+void CMFCDnDDlg::OnCbnSelchangeCombo1()
+{
+	int selectedRaceIndex = raceCombo.GetCurSel();
+
+	switch (selectedRaceIndex) {
+	case 0: // Human
+		racialBonuses = _T("Human gives +1 Every score");
+		break;
+	case 1: // Elf
+		racialBonuses = _T("Elf gives +2 Dexterity");
+		break;
+	case 2: // Dwarf
+		racialBonuses = _T("Dwarf gives +2 Constitution");
+		break;
+	case 3: // Gnome
+		racialBonuses = _T("Gnome gives +2 Intelligence");
+		break;
+	}
+
+	CEdit* pRacialBonusesEdit = (CEdit*)GetDlgItem(IDC_EDIT7);
+	pRacialBonusesEdit->SetWindowText(racialBonuses);
 }

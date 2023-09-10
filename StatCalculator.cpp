@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "StatCalculator.hpp"
 #include <random>
+#include "MFCDnDDlg.h"
 
 int modifiedStat;
 

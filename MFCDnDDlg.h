@@ -20,7 +20,7 @@ private:
 	CComboBox raceCombo;
 	CString strModifier, dexModifier, conModifier, intModifier, wisModifier, chaModifier;
 	CString modifiedStatStr, modifiedStatDex, modifiedStatCon, modifiedStatInt, modifiedStatWis, modifiedStatCha;
-	int baseStat = 8;
+	CString racialBonuses;
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_MFCDND_DIALOG };
@@ -43,4 +43,5 @@ public:
 	afx_msg void OnBnClickedOk();
 	void UpdateStats(int randomStat, const CString& modifierStr, CEdit* EditControl);
 	afx_msg void OnBnClickedCancel();
+	afx_msg void OnCbnSelchangeCombo1();
 };
