@@ -80,63 +80,50 @@ HCURSOR CMFCDnDDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-void CMFCDnDDlg::UpdateStats(int randomStat, const CString& modifierStr, CEdit* EditControl)
-{
-	CString modifiedStatStr;
-	modifiedStatStr.Format(_T("%d"), randomStat);
-	EditControl->SetWindowText(modifiedStatStr);
-}
-
-
-void CMFCDnDDlg::RaceModifiers(int selectedRaceIndex, int& randomStrStat, int& randomDexStat, int& randomConStat, int& randomIntStat, int& randomWisStat, int& randomChaStat) {
-	switch (selectedRaceIndex) {
-	case 0:
-		randomStrStat += HUMAN_MOD;
-		randomDexStat += HUMAN_MOD;
-		randomConStat += HUMAN_MOD;
-		randomIntStat += HUMAN_MOD;
-		randomWisStat += HUMAN_MOD;
-		randomChaStat += HUMAN_MOD;
-		break;
-	case 1:
-		randomDexStat += ELF_DEX_MOD;
-		break;
-	case 2:
-		randomConStat += DWARF_CON_MOD;
-		break;
-	case 3:
-		randomIntStat += GNOME_INT_MOD;
-		break;
-	}
-}
-
 
 void CMFCDnDDlg::OnBnClickedOk()
 {
-	StatCalculator statCalculator;
-	int randomStrStat = statCalculator.CalculateRandomStat();
-	int randomDexStat = statCalculator.CalculateRandomStat();
-	int randomConStat = statCalculator.CalculateRandomStat();
-	int randomIntStat = statCalculator.CalculateRandomStat();
-	int randomWisStat = statCalculator.CalculateRandomStat();
-	int randomChaStat = statCalculator.CalculateRandomStat();
-
-	int selectedRaceIndex = raceCombo.GetCurSel();
-
-	if (selectedRaceIndex == CB_ERR) {
-		errorMessage.LoadString(ERROR_MES);
-		MessageBox(errorMessage, _T("Warning"), MB_ICONWARNING | MB_OK);
+	int race_index = raceCombo.GetCurSel();
+	if (race_index == CB_ERR) {
+		CString txt; txt.LoadString(ERROR_MES);
+		CString caption; caption.LoadString(ERROR_CAPTION);
+		MessageBox(txt, caption, MB_ICONWARNING | MB_OK);
 		return;
 	}
+	StatCalculator sc;
+	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT1),
+		IDC_EDIT1);
+	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT2),
+		IDC_EDIT2);
+	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT3),
+		IDC_EDIT3);
+	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT4),
+		IDC_EDIT4);
+	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT5),
+		IDC_EDIT5);
+	UpdateStats(sc.CalculateRandomStat() + RaceModifier(race_index, IDC_EDIT6),
+		IDC_EDIT6);
+}
 
-	RaceModifiers(selectedRaceIndex, randomStrStat, randomDexStat, randomConStat, randomIntStat, randomWisStat, randomChaStat);
 
-	UpdateStats(randomStrStat, strModifier, (CEdit*)GetDlgItem(IDC_EDIT1));
-	UpdateStats(randomDexStat, dexModifier, (CEdit*)GetDlgItem(IDC_EDIT2));
-	UpdateStats(randomConStat, conModifier, (CEdit*)GetDlgItem(IDC_EDIT3));
-	UpdateStats(randomIntStat, intModifier, (CEdit*)GetDlgItem(IDC_EDIT4));
-	UpdateStats(randomWisStat, wisModifier, (CEdit*)GetDlgItem(IDC_EDIT5));
-	UpdateStats(randomChaStat, chaModifier, (CEdit*)GetDlgItem(IDC_EDIT6));
+int CMFCDnDDlg::RaceModifier(int race_index, UINT id) 
+{
+	switch (race_index) {
+	case 0:
+		return HUMAN_MOD;
+	case 1:
+		return id == IDC_EDIT2 ? ELF_DEX_MOD : 0;
+	case 2:
+		return id == IDC_EDIT3 ? DWARF_CON_MOD : 0;
+	case 3:
+		return id == IDC_EDIT4 ? GNOME_INT_MOD : 0;
+	}
+}
+
+void CMFCDnDDlg::UpdateStats(int n, UINT id)
+{
+	CString s; s.Format(_T("%d"), n);
+	GetDlgItem(id)->SetWindowText(s);
 }
 
 
@@ -146,25 +133,38 @@ void CMFCDnDDlg::OnBnClickedCancel()
 }
 
 
+CString CMFCDnDDlg::RaceExplaModifier(int race_index, UINT id)
+{
+	CString racialBonus;
+
+	switch (race_index) {
+	case 0:
+		racialBonus.LoadString(HUMAN_RACIAL_BONUS);
+		break;
+	case 1:
+		if (id == IDC_EDIT7)
+			racialBonus.LoadString(ELF_RACIAL_BONUS);
+		break;
+	case 2:
+		if (id == IDC_EDIT7)
+			racialBonus.LoadString(DWARF_RACIAL_BONUS);
+		break;
+	case 3:
+		if (id == IDC_EDIT7)
+			racialBonus.LoadString(GNOME_RACIAL_BONUS);
+		break;
+	}
+
+	return racialBonus;
+}
+
 void CMFCDnDDlg::OnCbnSelchangeCombo1()
 {
 	int selectedRaceIndex = raceCombo.GetCurSel();
 
-	switch (selectedRaceIndex) {
-	case 0:
-		racialBonuses = _T("Human gives +1 Every score");
-		break;
-	case 1:
-		racialBonuses = _T("Elf gives +2 Dexterity");
-		break;
-	case 2:
-		racialBonuses = _T("Dwarf gives +2 Constitution");
-		break;
-	case 3:
-		racialBonuses = _T("Gnome gives +2 Intelligence");
-		break;
-	}
+	CString racialBonuses = RaceExplaModifier(selectedRaceIndex, IDC_EDIT7);
 
 	CEdit* pRacialBonusesEdit = (CEdit*)GetDlgItem(IDC_EDIT7);
 	pRacialBonusesEdit->SetWindowText(racialBonuses);
 }
+

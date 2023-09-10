@@ -33,9 +33,6 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Race.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StatCalculator.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,9 +45,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Race.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StatCalculator.cpp">

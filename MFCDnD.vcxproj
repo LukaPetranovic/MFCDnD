@@ -270,7 +270,6 @@
     <ClInclude Include="MFCDnD.h" />
     <ClInclude Include="MFCDnDDlg.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Race.hpp" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StatCalculator.hpp" />
     <ClInclude Include="targetver.h" />
@@ -286,7 +285,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Race.cpp" />
     <ClCompile Include="StatCalculator.cpp" />
   </ItemGroup>
   <ItemGroup>
