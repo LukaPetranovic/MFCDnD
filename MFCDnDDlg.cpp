@@ -23,6 +23,7 @@ CMFCDnDDlg::CMFCDnDDlg(CWnd* pParent)
 void CMFCDnDDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_COMBO1, raceCombo);
 }
 
 BEGIN_MESSAGE_MAP(CMFCDnDDlg, CDialogEx)
@@ -41,12 +42,6 @@ BOOL CMFCDnDDlg::OnInitDialog()
 
 	SetIcon(m_hIcon, TRUE);
 	SetIcon(m_hIcon, FALSE);
-
-	raceCombo.SubclassDlgItem(IDC_COMBO1, this);
-	CComboBox* pRaceCombo = (CComboBox*)GetDlgItem(IDC_COMBO1);
-
-	CEdit* pRacialBonusesEdit = (CEdit*)GetDlgItem(IDC_EDIT7);
-	pRacialBonusesEdit->SetWindowText(_T("Select a race to show benefits"));
 
 	return TRUE;
 }
@@ -133,38 +128,21 @@ void CMFCDnDDlg::OnBnClickedCancel()
 }
 
 
-CString CMFCDnDDlg::RaceExplaModifier(int race_index, UINT id)
+CString CMFCDnDDlg::RaceExplaModifier(int race_index)
 {
-	CString racialBonus;
-
+	int id;
 	switch (race_index) {
-	case 0:
-		racialBonus.LoadString(HUMAN_RACIAL_BONUS);
-		break;
-	case 1:
-		if (id == IDC_EDIT7)
-			racialBonus.LoadString(ELF_RACIAL_BONUS);
-		break;
-	case 2:
-		if (id == IDC_EDIT7)
-			racialBonus.LoadString(DWARF_RACIAL_BONUS);
-		break;
-	case 3:
-		if (id == IDC_EDIT7)
-			racialBonus.LoadString(GNOME_RACIAL_BONUS);
-		break;
+	case 0: id = HUMAN_RACIAL_BONUS; break;
+	case 1: id = ELF_RACIAL_BONUS; break;
+	case 2: id = DWARF_RACIAL_BONUS; break;
+	case 3: id = GNOME_RACIAL_BONUS; break;
 	}
-
-	return racialBonus;
+	CString s; s.LoadString(id);
+	return s;
 }
 
 void CMFCDnDDlg::OnCbnSelchangeCombo1()
 {
-	int selectedRaceIndex = raceCombo.GetCurSel();
-
-	CString racialBonuses = RaceExplaModifier(selectedRaceIndex, IDC_EDIT7);
-
-	CEdit* pRacialBonusesEdit = (CEdit*)GetDlgItem(IDC_EDIT7);
-	pRacialBonusesEdit->SetWindowText(racialBonuses);
+	SetDlgItemText(IDC_EDIT7, RaceExplaModifier(raceCombo.GetCurSel()));
 }
 

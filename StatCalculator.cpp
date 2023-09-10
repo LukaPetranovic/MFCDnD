@@ -12,25 +12,19 @@ int StatCalculator::CalculateRandomStat() {
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(1, 6);
 
-    std::vector<int> randomNumbers(4);
-    std::generate(randomNumbers.begin(), randomNumbers.end(), [&]() { return dis(gen); });
+    int modifiedStat = 0;
 
-    int smallestNumber = *std::min_element(randomNumbers.begin(), randomNumbers.end());
-
-    int sum = std::accumulate(randomNumbers.begin(), randomNumbers.end(), 0);
-
-    int modifiedStat = sum - smallestNumber;
-
-    while (modifiedStat < 8) {
+    do {
+        std::vector<int> randomNumbers(4);
         std::generate(randomNumbers.begin(), randomNumbers.end(), [&]() { return dis(gen); });
-        smallestNumber = *std::min_element(randomNumbers.begin(), randomNumbers.end());
-        sum = std::accumulate(randomNumbers.begin(), randomNumbers.end(), 0);
+
+        int smallestNumber = *std::min_element(randomNumbers.begin(), randomNumbers.end());
+
+        int sum = std::accumulate(randomNumbers.begin(), randomNumbers.end(), 0);
+
         modifiedStat = sum - smallestNumber;
 
-        if (modifiedStat > 21) {
-            modifiedStat = 21;
-        }
-    }
+    } while (modifiedStat < 8);
 
     return modifiedStat;
 }

@@ -1,12 +1,6 @@
 
-// MFCDnDDlg.h : header file
-//
-
 #pragma once
 
-
-
-// CMFCDnDDlg dialog
 class CMFCDnDDlg : public CDialogEx
 {
 public:
@@ -16,7 +10,7 @@ private:
 	CComboBox raceCombo;
 	CString racialBonuses;
 	int RaceModifier(int race_index, UINT id);
-	CString RaceExplaModifier(int race_index, UINT id);
+	CString RaceExplaModifier(int race_index);
 	void UpdateStats(int n, UINT id);
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -38,8 +32,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
-	//void UpdateStats(int randomStat, const CString& modifierStr, CEdit* EditControl);
 	afx_msg void OnBnClickedCancel();
 	afx_msg void OnCbnSelchangeCombo1();
-	//void RaceModifiers(int selectedRaceIndex, int& randomStrStat, int& randomDexStat, int& randomConStat, int& randomIntStat, int& randomWisStat, int& randomChaStat);
 };

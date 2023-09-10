@@ -1,7 +1,3 @@
-
-// MFCDnD.h : main header file for the PROJECT_NAME application
-//
-
 #pragma once
 
 #ifndef __AFXWIN_H__
