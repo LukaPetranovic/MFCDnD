@@ -4,30 +4,29 @@
 
 #pragma once
 #include "Race.hpp"
-#include <vector>
 
 
 
 // CMFCDnDDlg dialog
 class CMFCDnDDlg : public CDialogEx
 {
-// Construction
 public:
-	CMFCDnDDlg(CWnd* pParent = nullptr);	// standard constructor
+	CMFCDnDDlg(CWnd* pParent = nullptr);
 
 private:
-	std::vector<Race> race;
 	CComboBox raceCombo;
 	CString strModifier, dexModifier, conModifier, intModifier, wisModifier, chaModifier;
 	CString modifiedStatStr, modifiedStatDex, modifiedStatCon, modifiedStatInt, modifiedStatWis, modifiedStatCha;
 	CString racialBonuses;
+	CString errorMessage;
+
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_MFCDND_DIALOG };
 #endif
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
+	virtual void DoDataExchange(CDataExchange* pDX);
 
 
 // Implementation
@@ -44,4 +43,5 @@ public:
 	void UpdateStats(int randomStat, const CString& modifierStr, CEdit* EditControl);
 	afx_msg void OnBnClickedCancel();
 	afx_msg void OnCbnSelchangeCombo1();
+	void RaceModifiers(int selectedRaceIndex, int& randomStrStat, int& randomDexStat, int& randomConStat, int& randomIntStat, int& randomWisStat, int& randomChaStat);
 };
