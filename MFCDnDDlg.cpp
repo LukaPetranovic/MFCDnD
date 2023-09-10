@@ -65,8 +65,8 @@ BOOL CMFCDnDDlg::OnInitDialog()
 	raceCombo.SubclassDlgItem(IDC_COMBO1, this);
 	CComboBox* pRaceCombo = (CComboBox*)GetDlgItem(IDC_COMBO1);
 	for (const Race& r : race) {
-			pRaceCombo->AddString(r.name);
-		}
+		pRaceCombo->AddString(r.name);
+	}
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -128,7 +128,6 @@ void GenerateRandomStats(int& randomStrStat, int& randomDexStat, int& randomConS
 
 void CMFCDnDDlg::OnBnClickedOk()
 {
-	// TODO: Add your control notification handler code here
 
 	int selectedRaceIndex = raceCombo.GetCurSel();
 
@@ -138,11 +137,11 @@ void CMFCDnDDlg::OnBnClickedOk()
 	}
 	Race selectedRace;
 	int randomStrStat, randomDexStat, randomConStat, randomIntStat, randomWisStat, randomChaStat, modifier;
-	CEdit* pStrEdit, *pDexEdit, *pConEdit, *pIntEdit, *pWisEdit, *pChaEdit;
+	CEdit* pStrEdit, * pDexEdit, * pConEdit, * pIntEdit, * pWisEdit, * pChaEdit;
 
 	StatCalculator statCalculator;
 	GenerateRandomStats(randomStrStat, randomDexStat, randomConStat, randomIntStat, randomWisStat, randomChaStat, statCalculator);
-	
+
 	switch (selectedRaceIndex) {
 	case 0:
 
@@ -286,6 +285,5 @@ void CMFCDnDDlg::OnBnClickedOk()
 
 void CMFCDnDDlg::OnBnClickedCancel()
 {
-	// TODO: Add your control notification handler code here
 	CDialogEx::OnCancel();
 }
